@@ -4,7 +4,7 @@
 
 * [Introduction](#introduction)
 * [Quick Start](#quick-start)
-* [Additional Test Steps](#)
+* [Additional Test Steps](https://github.com/peiffer-innovations/automated_testing_framework_plugin_firestore/blob/main/documentation/STEPS.md)
 * [Supported Platforms](#supported-platforms)
 
 

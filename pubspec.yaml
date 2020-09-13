@@ -2,7 +2,7 @@ name: automated_testing_framework_plugin_firestore
 description: Library to use Google's Firestore as a storage mechanism for automated tests and test results.
 homepage: https://github.com/peiffer-innovations/automated_testing_framework_plugin_firestore
 
-version: 1.0.1
+version: 1.0.1+1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
