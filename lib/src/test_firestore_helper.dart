@@ -92,10 +92,6 @@ class TestFirestoreHelper {
   /// Set to [null] to use the default reference.
   static set firestore(FirebaseFirestore firestore) => _firestore = firestore;
 
-  /// Replaces smart quotes with JSON compatible quotes.
-  static String normalizeQuotes(String value) =>
-      value.replaceAll('“', '"').replaceAll('”', '"');
-
   /// Registers the test steps to the optional [registry].  If not set, the
   /// default [TestStepRegistry] will be used.
   static void registerTestSteps([TestStepRegistry registry]) {
