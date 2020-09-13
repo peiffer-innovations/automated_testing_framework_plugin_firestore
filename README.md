@@ -4,12 +4,13 @@
 
 * [Introduction](#introduction)
 * [Quick Start](#quick-start)
+* [Additional Test Steps](#)
 * [Supported Platforms](#supported-platforms)
 
 
 ## Introduction
 
-The first step in the process is to make sure your app is setup and registered with Google's Firestore console and the appropriate files have been added to your application's manifests.  For a great guide on this process, see [https://firebase.flutter.dev/docs/overview].
+The first step in the process is to make sure your app is setup and registered with Google's Firestore console and the appropriate files have been added to your application's manifests.  For a great guide on this process, see [https://firebase.flutter.dev/docs/overview](https://firebase.flutter.dev/docs/overview).
 
 In addition to Firestore this also supports Firebase Storage for the screenshots.  If you would like to utilize that, follow the Firebase Storage instructions in the previous link.
 

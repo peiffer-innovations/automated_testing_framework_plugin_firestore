@@ -1,3 +1,8 @@
+## [1.0.1] - September 13th, 2020
+
+* Added `assert_firestore_value` and `set_firestore_value` steps to the plugin
+
+
 ## [1.0.0+1] - September 9th, 2020
 
 * Fixed reference in example to be versioned rather than local

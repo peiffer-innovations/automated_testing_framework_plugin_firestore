@@ -43,6 +43,9 @@ void main() async {
     storage: FirebaseStorage.instance,
   );
 
+  TestFirestoreHelper.autoformatJson = true;
+  TestFirestoreHelper.registerTestSteps();
+
   var gestures = TestableGestures();
   var wsPlatform = WebsafePlatform();
   if (wsPlatform.isFuchsia() ||
