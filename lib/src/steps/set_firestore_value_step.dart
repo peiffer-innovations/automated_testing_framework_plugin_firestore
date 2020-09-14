@@ -56,6 +56,12 @@ class SetFirestoreValueStep extends TestRunnerStep {
     @required TestReport report,
     @required TestController tester,
   }) async {
+    String collectionPath = tester.resolveVariable(this.collectionPath);
+    String documentId = tester.resolveVariable(this.documentId);
+    String value = tester.resolveVariable(this.value);
+    assert(collectionPath?.isNotEmpty == true);
+    assert(documentId?.isNotEmpty == true);
+
     var name =
         "set_firestore_value('$collectionPath', '$documentId', '$value')";
     log(

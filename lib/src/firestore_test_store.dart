@@ -128,6 +128,7 @@ class FirestoreTestStore {
       'endTime': report.endTime,
       'errorSteps': report.errorSteps,
       'images': report.images.map((entity) => entity.hash).toList(),
+      'logs': report.logs,
       'name': report.name,
       'passedSteps': report.passedSteps,
       'runtimeException': report.runtimeException,

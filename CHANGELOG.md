@@ -1,3 +1,9 @@
+## [1.0.2] - September 14th, 2020
+
+* Added logs to `TestReport`
+* Added support for variables in steps
+
+
 ## [1.0.1] - September 13th, 2020
 
 * Added `assert_firestore_value` and `set_firestore_value` steps to the plugin

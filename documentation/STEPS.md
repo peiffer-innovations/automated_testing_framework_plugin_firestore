@@ -58,12 +58,12 @@ Test Step IDs                                     | Description
 
 **Values**
 
-Key              | Type    | Required | Description
------------------|---------|----------|-------------
-`collectionPath` | String  | Yes      | The `collectionPath` to the Document. 
-`documentId`     | String  | Yes      | The `id` of the Firestore Document to check.
-`equals`         | boolean | No       | Defines whether the Document's value must equal the `value` or must not equal the `value`.  Defaults to `true` if not defined.
-`value`          | String  | Yes      | The value to evaluate against.
+Key              | Type    | Required | Supports Variable | Description
+-----------------|---------|----------|-------------------|-------------
+`collectionPath` | String  | Yes      | Yes               | The `collectionPath` to the Document. 
+`documentId`     | String  | Yes      | Yes               | The `id` of the Firestore Document to check.
+`equals`         | boolean | No       | No                | Defines whether the Document's value must equal the `value` or must not equal the `value`.  Defaults to `true` if not defined.
+`value`          | String  | Yes      | Yes               | The value to evaluate against.
 
 
 ---
@@ -91,9 +91,9 @@ Key              | Type    | Required | Description
 
 **Values**
 
-Key              | Type    | Required | Description
------------------|---------|----------|-------------
-`collectionPath` | String  | Yes      | The `id` of the `Testable` to evaluate the value.
-`documentId`     | String  | Yes      | The `id` of the Firestore Document to check.
-`value`          | String  | Yes      | The String-encoded JSON value to set to the Document.
+Key              | Type    | Required | Supports Variable | Description
+-----------------|---------|----------|-------------------|-------------
+`collectionPath` | String  | Yes      | Yes               | The `id` of the `Testable` to evaluate the value.
+`documentId`     | String  | Yes      | Yes               | The `id` of the Firestore Document to check.
+`value`          | String  | Yes      | Yes               | The String-encoded JSON value to set to the Document.
 

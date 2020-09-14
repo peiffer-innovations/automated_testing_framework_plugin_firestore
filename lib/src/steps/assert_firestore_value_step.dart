@@ -69,8 +69,14 @@ class AssertFirestoreValueStep extends TestRunnerStep {
     @required TestReport report,
     @required TestController tester,
   }) async {
+    String collectionPath = tester.resolveVariable(this.collectionPath);
+    String documentId = tester.resolveVariable(this.documentId);
+    String value = tester.resolveVariable(this.value);
+    assert(collectionPath?.isNotEmpty == true);
+    assert(documentId?.isNotEmpty == true);
+
     var name =
-        "assert_firestore_value('$collectionPath', '$documentId', '$value')";
+        "assert_firestore_value('$collectionPath', '$documentId', '$value', '$equals')";
     log(
       name,
       tester: tester,
