@@ -65,7 +65,10 @@ class FirestoreTestStore {
 
   /// Implementation of the [TestReader] functional interface that can read test
   /// data from Cloud Firestore.
-  Future<List<PendingTest>> testReader(BuildContext context) async {
+  Future<List<PendingTest>> testReader(
+    BuildContext context, {
+    String suiteName,
+  }) async {
     List<PendingTest> results;
 
     try {
@@ -98,10 +101,13 @@ class FirestoreTestStore {
           }),
           name: data['name'],
           numSteps: data['numSteps'],
+          suiteName: data['suiteName'],
           version: data['version'],
         );
 
-        results.add(pTest);
+        if (suiteName == null || pTest.suiteName == suiteName) {
+          results.add(pTest);
+        }
       }
     } catch (e, stack) {
       _logger.severe('Error loading tests', e, stack);
@@ -136,6 +142,7 @@ class FirestoreTestStore {
       'startTime': report.startTime,
       'steps': JsonClass.toJsonList(report.steps),
       'success': report.success,
+      'suiteName': report.suiteName,
       'version': report.version,
     });
 

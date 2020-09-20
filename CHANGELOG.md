@@ -1,3 +1,8 @@
+## [1.0.4] - September 19th, 2020
+
+* Updated with test suite capabilities
+
+
 ## [1.0.3] - September 14th, 2020
 
 * Switched to the common `automated_testing_framework_plugin_firebase_storage` image uploader.
