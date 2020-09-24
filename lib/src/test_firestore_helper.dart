@@ -152,6 +152,7 @@ class _JsonTextInputFormatter extends TextInputFormatter {
 }
 
 class _JsonValidator extends ValueValidator {
+  @override
   String validate({
     @required String label,
     @required Translator translator,
@@ -170,5 +171,6 @@ class _JsonValidator extends ValueValidator {
     return error;
   }
 
+  @override
   Map<String, dynamic> toJson() => {};
 }

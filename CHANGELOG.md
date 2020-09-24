@@ -1,3 +1,9 @@
+## [1.0.5] - September 25th, 2020
+
+* Updated to latest report structure
+* Updated to latest framework
+
+
 ## [1.0.4] - September 19th, 2020
 
 * Updated with test suite capabilities

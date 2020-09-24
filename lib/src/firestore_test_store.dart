@@ -130,28 +130,14 @@ class FirestoreTestStore {
         .doc(
             '${report.deviceInfo.deviceSignature}_${report.startTime.millisecondsSinceEpoch}');
 
-    await doc.set({
-      'deviceInfo': report.deviceInfo.toJson(),
-      'endTime': report.endTime,
-      'errorSteps': report.errorSteps,
-      'images': report.images.map((entity) => entity.hash).toList(),
-      'logs': report.logs,
-      'name': report.name,
-      'passedSteps': report.passedSteps,
-      'runtimeException': report.runtimeException,
-      'startTime': report.startTime,
-      'steps': JsonClass.toJsonList(report.steps),
-      'success': report.success,
-      'suiteName': report.suiteName,
-      'version': report.version,
-    });
+    await doc.set(report.toJson(false));
 
     if (!kIsWeb && storage != null) {
       var testStorage = FirebaseStorageTestStore(
         storage: storage,
         imagePath: imagePath,
       );
-      testStorage.uploadImages(report);
+      await testStorage.uploadImages(report);
     }
 
     return result;
@@ -169,7 +155,7 @@ class FirestoreTestStore {
       var actualCollectionPath = (testCollectionPath ?? 'tests');
       var collection = db.collection(actualCollectionPath);
 
-      int version = (test.version ?? 0) + 1;
+      var version = (test.version ?? 0) + 1;
 
       var testData = <String, dynamic>{
         'activeVersion': version,

@@ -11,14 +11,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  automated_testing_framework_example: ^1.0.4
+  automated_testing_framework_example: ^1.0.7
+  automated_testing_framework_plugin_images: ^1.0.0
   websafe_platform: ^1.0.5
 
 dependency_overrides:
-  #   automated_testing_framework:
-  #     path: ../../automated_testing_framework
-  #   automated_testing_framework_example:
-  #     path: ../../automated_testing_framework_example
+  # automated_testing_framework:
+  #   path: ../../automated_testing_framework
+  # automated_testing_framework_example:
+  #   path: ../../automated_testing_framework_example
   automated_testing_framework_plugin_firestore:
     path: ../
 
