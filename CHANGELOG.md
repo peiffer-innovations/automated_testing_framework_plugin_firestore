@@ -1,12 +1,18 @@
+## [1.0.6] - October 3rd, 2020
+
+* Fixed suite name in test reader.
+* Update for Flutter 1.22
+
+
 ## [1.0.5] - September 25th, 2020
 
-* Updated to latest report structure
-* Updated to latest framework
+* Updated to latest report structure.
+* Updated to latest framework.
 
 
 ## [1.0.4] - September 19th, 2020
 
-* Updated with test suite capabilities
+* Updated with test suite capabilities.
 
 
 ## [1.0.3] - September 14th, 2020
@@ -16,20 +22,20 @@
 
 ## [1.0.2] - September 14th, 2020
 
-* Added logs to `TestReport`
-* Added support for variables in steps
+* Added logs to `TestReport`.
+* Added support for variables in steps.
 
 
 ## [1.0.1] - September 13th, 2020
 
-* Added `assert_firestore_value` and `set_firestore_value` steps to the plugin
+* Added `assert_firestore_value` and `set_firestore_value` steps to the plugin.
 
 
 ## [1.0.0+1] - September 9th, 2020
 
-* Fixed reference in example to be versioned rather than local
+* Fixed reference in example to be versioned rather than local.
 
 
 ## [1.0.0] - September 9th, 2020
 
-* Initial release
+* Initial release.

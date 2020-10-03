@@ -96,6 +96,7 @@ class FirestoreTestStore {
                 testDoc.data()['steps'],
                 (entry) => TestStep.fromDynamic(entry),
               ),
+              suiteName: data['suiteName'],
               version: version,
             );
           }),

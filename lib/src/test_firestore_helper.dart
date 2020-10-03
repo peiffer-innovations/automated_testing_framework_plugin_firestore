@@ -50,7 +50,9 @@ class TestFirestoreHelper {
     }
 
     return TextFormField(
-      autovalidate: validators?.isNotEmpty == true,
+      autovalidateMode: validators?.isNotEmpty == true
+          ? AutovalidateMode.always
+          : AutovalidateMode.disabled,
       decoration: InputDecoration(
         labelText: translator.translate(label),
       ),
