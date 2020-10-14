@@ -162,6 +162,7 @@ class FirestoreTestStore {
         'activeVersion': version,
         'name': test.name,
         'numSteps': test.steps.length,
+        'timestamp': DateTime.now(),
         'version': version,
       };
       var versionData = <Map<String, dynamic>>[];

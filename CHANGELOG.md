@@ -1,3 +1,8 @@
+## [1.0.7] - October 14th, 2020
+
+* Added timestamp to `testWriter`.
+
+
 ## [1.0.6] - October 3rd, 2020
 
 * Fixed suite name in test reader.
