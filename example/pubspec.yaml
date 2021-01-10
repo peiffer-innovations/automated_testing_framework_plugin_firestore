@@ -9,10 +9,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
   automated_testing_framework_example: ^1.0.7
   automated_testing_framework_plugin_images: ^1.0.0
+  flutter:
+    sdk: flutter
   websafe_platform: ^1.0.5
 
 dependency_overrides:
@@ -24,10 +24,10 @@ dependency_overrides:
     path: ../
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.8.1
+  flutter_native_splash: ^0.1.9
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.8.0
-  flutter_native_splash: ^0.1.9
 
 flutter_icons:
   android: true

@@ -1,3 +1,8 @@
+## [1.0.7+1] - January 10th, 2021
+
+* Dependency updates.
+
+
 ## [1.0.7] - October 14th, 2020
 
 * Added timestamp to `testWriter`.
