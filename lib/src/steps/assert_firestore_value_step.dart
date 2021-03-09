@@ -2,21 +2,17 @@ import 'dart:convert';
 
 import 'package:automated_testing_framework/automated_testing_framework.dart';
 import 'package:automated_testing_framework_plugin_firestore/automated_testing_framework_plugin_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:json_class/json_class.dart';
-import 'package:meta/meta.dart';
 
 /// Test step that asserts that the value equals (or does not equal) a specific
 /// value.
 class AssertFirestoreValueStep extends TestRunnerStep {
   AssertFirestoreValueStep({
-    @required this.collectionPath,
-    @required this.documentId,
-    @required this.equals,
-    @required this.value,
-  })  : assert(collectionPath?.isNotEmpty == true),
-        assert(documentId?.isNotEmpty == true),
-        assert(equals != null);
+    required this.collectionPath,
+    required this.documentId,
+    required this.equals,
+    required this.value,
+  });
 
   /// The collection path to look for the Document in.
   final String collectionPath;
@@ -30,7 +26,7 @@ class AssertFirestoreValueStep extends TestRunnerStep {
   final bool equals;
 
   /// The [value] to test againt when comparing the [Testable]'s value.
-  final String value;
+  final String? value;
 
   /// Creates an instance from a JSON-like map structure.  This expects the
   /// following format:
@@ -46,8 +42,8 @@ class AssertFirestoreValueStep extends TestRunnerStep {
   ///
   /// See also:
   /// * [JsonClass.parseBool]
-  static AssertFirestoreValueStep fromDynamic(dynamic map) {
-    AssertFirestoreValueStep result;
+  static AssertFirestoreValueStep? fromDynamic(dynamic map) {
+    AssertFirestoreValueStep? result;
 
     if (map != null) {
       result = AssertFirestoreValueStep(
@@ -66,14 +62,14 @@ class AssertFirestoreValueStep extends TestRunnerStep {
   /// value form the document to the [value].
   @override
   Future<void> execute({
-    @required CancelToken cancelToken,
-    @required TestReport report,
-    @required TestController tester,
+    required CancelToken cancelToken,
+    required TestReport report,
+    required TestController tester,
   }) async {
     String collectionPath = tester.resolveVariable(this.collectionPath);
-    String documentId = tester.resolveVariable(this.documentId);
-    String value = tester.resolveVariable(this.value);
-    assert(collectionPath?.isNotEmpty == true);
+    String? documentId = tester.resolveVariable(this.documentId);
+    String? value = tester.resolveVariable(this.value);
+    assert(collectionPath.isNotEmpty == true);
     assert(documentId?.isNotEmpty == true);
 
     var name =

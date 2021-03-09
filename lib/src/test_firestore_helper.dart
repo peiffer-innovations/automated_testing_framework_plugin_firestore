@@ -19,20 +19,17 @@ class TestFirestoreHelper {
   /// it is being entered or not.  Set to [true] to enable the autoformatter.
   /// Set to [null] or [false] to disable it.
   static bool autoformatJson = false;
-  static FirebaseFirestore _firestore;
+  static FirebaseFirestore? _firestore;
 
   static Widget buildJsonEditText({
-    @required BuildContext context,
-    @required String id,
-    String defaultValue,
-    @required TranslationEntry label,
-    List<ValueValidator> validators,
-    @required Map<String, dynamic> values,
+    required BuildContext context,
+    required String id,
+    String? defaultValue,
+    required TranslationEntry label,
+    List<ValueValidator>? validators,
+    required Map<String, dynamic> values,
   }) {
-    assert(context != null);
-    assert(id?.isNotEmpty == true);
-    assert(label != null);
-    assert(values != null);
+    assert(id.isNotEmpty == true);
 
     if (values[id] == null && defaultValue != null) {
       values[id] = defaultValue;
@@ -43,7 +40,7 @@ class TestFirestoreHelper {
     var initialValue = values[id]?.toString();
     if (initialValue?.isNotEmpty == true) {
       try {
-        initialValue = encoder.convert(json.decode(initialValue));
+        initialValue = encoder.convert(json.decode(initialValue!));
       } catch (e) {
         // no-op
       }
@@ -96,7 +93,7 @@ class TestFirestoreHelper {
 
   /// Registers the test steps to the optional [registry].  If not set, the
   /// default [TestStepRegistry] will be used.
-  static void registerTestSteps([TestStepRegistry registry]) {
+  static void registerTestSteps([TestStepRegistry? registry]) {
     (registry ?? TestStepRegistry.instance).registerCustomSteps([
       TestStepBuilder(
         availableTestStep: AvailableTestStep(
@@ -155,15 +152,15 @@ class _JsonTextInputFormatter extends TextInputFormatter {
 
 class _JsonValidator extends ValueValidator {
   @override
-  String validate({
-    @required String label,
-    @required Translator translator,
-    @required String value,
+  String? validate({
+    required String label,
+    required Translator translator,
+    required String? value,
   }) {
-    String error;
+    String? error;
 
     try {
-      json.decode(value);
+      json.decode(value!);
     } catch (e) {
       error = translator.translate(
         TestFirestoreTranslations.atf_firestore_error_not_valid_json,

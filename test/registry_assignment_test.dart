@@ -7,7 +7,7 @@ void main() {
     TestFirestoreHelper.registerTestSteps();
     var availStep = TestStepRegistry.instance.getAvailableTestStep(
       'assert_firestore_value',
-    );
+    )!;
 
     expect(availStep.form.runtimeType, AssertFirestoreValueForm);
     expect(availStep.help,
@@ -25,7 +25,7 @@ void main() {
     TestFirestoreHelper.registerTestSteps();
     var availStep = TestStepRegistry.instance.getAvailableTestStep(
       'set_firestore_value',
-    );
+    )!;
 
     expect(availStep.form.runtimeType, SetFirestoreValueForm);
     expect(availStep.help,

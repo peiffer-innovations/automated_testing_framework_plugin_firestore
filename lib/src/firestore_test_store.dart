@@ -29,12 +29,12 @@ class FirestoreTestStore {
   /// Firestore where the test reports must be saved.  If omitted, this defaults
   /// to 'reports'.
   FirestoreTestStore({
-    @required this.db,
+    required this.db,
     this.imagePath,
     this.reportCollectionPath,
     this.storage,
     this.testCollectionPath,
-  }) : assert(db != null);
+  });
 
   static final Logger _logger = Logger('FirestoreTestStore');
 
@@ -45,31 +45,31 @@ class FirestoreTestStore {
   /// Optional path for screenshots to be uploated to within Firebase Storage.
   /// If [storage] is null or if this is on the web platform, this value is
   /// ignored.
-  final String imagePath;
+  final String? imagePath;
 
   /// Optional collection path to store test reports.  If omitted, this defaults
   /// to 'reports'.  Provided to allow for a single Firestore instance the
   /// ability to host multiple applications or environments.
-  final String reportCollectionPath;
+  final String? reportCollectionPath;
 
   /// Optional [FirebaseStorage] reference object.  If set, and the platform is
   /// not web, then this will be used to upload screenshot results from test
   /// reports.  If omitted, screenshots will not be uploaded anywhere and will
   /// be lost if this test store is used for test reports.
-  final FirebaseStorage storage;
+  final FirebaseStorage? storage;
 
   /// Optional collection path to store test data.  If omitted, this defaults
   /// to 'tests'.  Provided to allow for a single Firestore instance the ability
   /// to host multiple applications or environments.
-  final String testCollectionPath;
+  final String? testCollectionPath;
 
   /// Implementation of the [TestReader] functional interface that can read test
   /// data from Cloud Firestore.
   Future<List<PendingTest>> testReader(
-    BuildContext context, {
-    String suiteName,
+    BuildContext? context, {
+    String? suiteName,
   }) async {
-    List<PendingTest> results;
+    List<PendingTest>? results;
 
     try {
       results = [];
@@ -78,9 +78,9 @@ class FirestoreTestStore {
       var collection = db.collection(actualCollectionPath);
       var query = await collection.orderBy('name').get();
       for (var doc in query.docs) {
-        var data = doc.data();
+        var data = doc.data()!;
         var pTest = PendingTest(
-          loader: AsyncTestLoader(({bool ignoreImages}) async {
+          loader: AsyncTestLoader(({bool? ignoreImages}) async {
             var testDoc = await db
                 .collection(actualCollectionPath)
                 .doc(doc.id)
@@ -88,12 +88,12 @@ class FirestoreTestStore {
                 .doc(data['activeVersion'].toString())
                 .get();
 
-            var version = JsonClass.parseInt(testDoc.id);
+            var version = JsonClass.parseInt(testDoc.id)!;
             return Test(
               active: true,
               name: data['name'],
               steps: JsonClass.fromDynamicList(
-                testDoc.data()['steps'],
+                testDoc.data()!['steps'],
                 (entry) => TestStep.fromDynamic(entry),
               ),
               suiteName: data['suiteName'],
@@ -129,13 +129,13 @@ class FirestoreTestStore {
         .doc('${report.name}_${report.version}')
         .collection('devices')
         .doc(
-            '${report.deviceInfo.deviceSignature}_${report.startTime.millisecondsSinceEpoch}');
+            '${report.deviceInfo!.deviceSignature}_${report.startTime!.millisecondsSinceEpoch}');
 
     await doc.set(report.toJson(false));
 
     if (!kIsWeb && storage != null) {
       var testStorage = FirebaseStorageTestStore(
-        storage: storage,
+        storage: storage!,
         imagePath: imagePath,
       );
       await testStorage.uploadImages(report);
@@ -156,7 +156,7 @@ class FirestoreTestStore {
       var actualCollectionPath = (testCollectionPath ?? 'tests');
       var collection = db.collection(actualCollectionPath);
 
-      var version = (test.version ?? 0) + 1;
+      var version = test.version + 1;
 
       var testData = <String, dynamic>{
         'activeVersion': version,
