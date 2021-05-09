@@ -1,3 +1,8 @@
+## [3.0.1] - May 9th, 2021
+
+* Added BDD values to the steps.
+
+
 ## [3.0.0] - March 8th, 2021
 
 * Null Safety

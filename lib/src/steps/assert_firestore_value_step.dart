@@ -14,6 +14,12 @@ class AssertFirestoreValueStep extends TestRunnerStep {
     required this.value,
   });
 
+  static List<String> get behaviorDrivenDescriptions => List.unmodifiable([
+        "assert the value in firestore's `{{collectionPath}}` collection and `{{documentId}}` document is `{{equals}}` to `{{value}}`.",
+      ]);
+
+  static const id = 'assert_firestore_value';
+
   /// The collection path to look for the Document in.
   final String collectionPath;
 
@@ -27,6 +33,9 @@ class AssertFirestoreValueStep extends TestRunnerStep {
 
   /// The [value] to test againt when comparing the [Testable]'s value.
   final String? value;
+
+  @override
+  String get stepId => id;
 
   /// Creates an instance from a JSON-like map structure.  This expects the
   /// following format:
@@ -72,8 +81,7 @@ class AssertFirestoreValueStep extends TestRunnerStep {
     assert(collectionPath.isNotEmpty == true);
     assert(documentId?.isNotEmpty == true);
 
-    var name =
-        "assert_firestore_value('$collectionPath', '$documentId', '$value', '$equals')";
+    var name = "$id('$collectionPath', '$documentId', '$value', '$equals')";
     log(
       name,
       tester: tester,
@@ -89,6 +97,21 @@ class AssertFirestoreValueStep extends TestRunnerStep {
         'document: [$collectionPath/$documentId] -- actualValue: [$data] ${equals == true ? '!=' : '=='} [$value].',
       );
     }
+  }
+
+  @override
+  String getBehaviorDrivenDescription() {
+    var result = behaviorDrivenDescriptions[0];
+
+    result = result.replaceAll('{{collectionPath}}', collectionPath);
+    result = result.replaceAll('{{documentId}}', documentId);
+    result = result.replaceAll(
+      '{{equals}}',
+      equals == true ? 'equal' : 'not equal',
+    );
+    result = result.replaceAll('{{value}}', value ?? 'null');
+
+    return result;
   }
 
   /// Converts this to a JSON compatible map.  For a description of the format,

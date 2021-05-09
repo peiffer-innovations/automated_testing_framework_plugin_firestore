@@ -100,7 +100,7 @@ class TestFirestoreHelper {
           form: AssertFirestoreValueForm(),
           help: TestFirestoreTranslations
               .atf_firestore_help_assert_firestore_value,
-          id: 'assert_firestore_value',
+          id: AssertFirestoreValueStep.id,
           keys: const {'collectionPath', 'documentId', 'equals', 'value'},
           quickAddValues: null,
           title: TestFirestoreTranslations
@@ -115,7 +115,7 @@ class TestFirestoreHelper {
           form: SetFirestoreValueForm(),
           help:
               TestFirestoreTranslations.atf_firestore_help_set_firestore_value,
-          id: 'set_firestore_value',
+          id: SetFirestoreValueStep.id,
           keys: const {'collectionPath', 'documentId', 'value'},
           quickAddValues: null,
           title:

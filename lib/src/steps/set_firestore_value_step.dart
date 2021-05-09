@@ -12,6 +12,12 @@ class SetFirestoreValueStep extends TestRunnerStep {
     required this.value,
   });
 
+  static const id = 'set_firestore_value';
+
+  static List<String> get behaviorDrivenDescriptions => List.unmodifiable([
+        "set the value in firestore's `{{collectionPath}}` collection and `{{documentId}}` document to `{{value}}`.",
+      ]);
+
   /// The collection path to look for the Document in.
   final String collectionPath;
 
@@ -20,6 +26,9 @@ class SetFirestoreValueStep extends TestRunnerStep {
 
   /// The string representation of the value to set.
   final String? value;
+
+  @override
+  String get stepId => id;
 
   /// Creates an instance from a JSON-like map structure.  This expects the
   /// following format:
@@ -59,8 +68,7 @@ class SetFirestoreValueStep extends TestRunnerStep {
     assert(collectionPath.isNotEmpty == true);
     assert(documentId?.isNotEmpty == true);
 
-    var name =
-        "set_firestore_value('$collectionPath', '$documentId', '$value')";
+    var name = "$id('$collectionPath', '$documentId', '$value')";
     log(
       name,
       tester: tester,
@@ -71,6 +79,17 @@ class SetFirestoreValueStep extends TestRunnerStep {
     var doc = firestore.collection(collectionPath).doc(documentId);
     var data = json.decode(value);
     await doc.set(data);
+  }
+
+  @override
+  String getBehaviorDrivenDescription() {
+    var result = behaviorDrivenDescriptions[0];
+
+    result = result.replaceAll('{{collectionPath}}', collectionPath);
+    result = result.replaceAll('{{documentId}}', documentId);
+    result = result.replaceAll('{{value}}', value ?? 'null');
+
+    return result;
   }
 
   /// Converts this to a JSON compatible map.  For a description of the format,

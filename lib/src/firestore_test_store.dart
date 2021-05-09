@@ -78,7 +78,7 @@ class FirestoreTestStore {
       var collection = db.collection(actualCollectionPath);
       var query = await collection.orderBy('name').get();
       for (var doc in query.docs) {
-        var data = doc.data()!;
+        var data = doc.data();
         var pTest = PendingTest(
           loader: AsyncTestLoader(({bool? ignoreImages}) async {
             var testDoc = await db
