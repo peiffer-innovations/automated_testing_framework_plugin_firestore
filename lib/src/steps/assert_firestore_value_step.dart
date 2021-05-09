@@ -100,7 +100,7 @@ class AssertFirestoreValueStep extends TestRunnerStep {
   }
 
   @override
-  String getBehaviorDrivenDescription() {
+  String getBehaviorDrivenDescription(TestController tester) {
     var result = behaviorDrivenDescriptions[0];
 
     result = result.replaceAll('{{collectionPath}}', collectionPath);
