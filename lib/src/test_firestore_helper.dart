@@ -17,7 +17,7 @@ import 'package:static_translations/static_translations.dart';
 class TestFirestoreHelper {
   /// A config variable that instructs the JSON value to autoformat the JSON as
   /// it is being entered or not.  Set to [true] to enable the autoformatter.
-  /// Set to [null] or [false] to disable it.
+  /// Set to `null` or [false] to disable it.
   static bool autoformatJson = false;
   static FirebaseFirestore? _firestore;
 
@@ -88,7 +88,7 @@ class TestFirestoreHelper {
       _firestore ?? FirebaseFirestore.instance;
 
   /// Sets the custom [FirebaseFirestore] reference for the test steps to use.
-  /// Set to [null] to use the default reference.
+  /// Set to `null` to use the default reference.
   static set firestore(FirebaseFirestore firestore) => _firestore = firestore;
 
   /// Registers the test steps to the optional [registry].  If not set, the
