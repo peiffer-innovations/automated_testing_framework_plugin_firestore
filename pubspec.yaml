@@ -1,37 +1,29 @@
-name: automated_testing_framework_plugin_firestore
-description: Library to use Google's Firestore as a storage mechanism for automated tests and test results.
-homepage: https://github.com/peiffer-innovations/automated_testing_framework_plugin_firestore
+name: 'automated_testing_framework_plugin_firestore'
+description: "Library to use Google's Firestore as a storage mechanism for automated tests and test results."
+homepage: 'https://github.com/peiffer-innovations/automated_testing_framework_plugin_firestore'
+version: '5.0.0+1'
 
-version: 5.0.0
-
-environment:
+environment: 
   sdk: '>=2.17.0 <3.0.0'
 
-dependencies:
-  automated_testing_framework: ^4.0.0
-  automated_testing_framework_plugin_firebase_storage: ^5.0.0
-  cloud_firestore: ^3.1.15
-  firebase_auth: ^3.3.15
-  firebase_core: ^1.17.0
-  firebase_storage: ^10.2.16
-  flutter:
-    sdk: flutter
-  form_validation: ^2.1.0+2
-  json_class: ^2.1.2+4
-  logging: ^1.0.1
-  static_translations: ^2.1.1
+dependencies: 
+  automated_testing_framework: '^4.0.1+1'
+  automated_testing_framework_plugin_firebase_storage: '^5.0.0'
+  cloud_firestore: '^3.1.17'
+  firebase_auth: '^3.3.19'
+  firebase_core: '^1.17.1'
+  firebase_storage: '^10.2.17'
+  flutter: 
+    sdk: 'flutter'
+  form_validation: '^2.1.0+2'
+  json_class: '^2.1.2+4'
+  logging: '^1.0.2'
+  static_translations: '^2.1.1'
 
-# dependency_overrides:
-#   automated_testing_framework:
-#     path: ../automated_testing_framework
-#   automated_testing_framework_models:
-#     path: ../automated_testing_framework_models
-#   automated_testing_framework_plugin_firebase_storage:
-#     path: ../automated_testing_framework_plugin_firebase_storage
+dev_dependencies: 
+  flutter_test: 
+    sdk: 'flutter'
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
 
-flutter:
+flutter: 
   uses-material-design: true
