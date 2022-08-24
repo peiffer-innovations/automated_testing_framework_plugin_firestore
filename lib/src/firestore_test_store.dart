@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:automated_testing_framework/automated_testing_framework.dart';
 import 'package:automated_testing_framework_plugin_firebase_storage/automated_testing_framework_plugin_firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

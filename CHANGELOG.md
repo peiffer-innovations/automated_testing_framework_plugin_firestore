@@ -1,3 +1,8 @@
+## [5.0.1] - August 24th, 2022
+
+* Analysis Fixes
+
+
 ## [5.0.0+11] - August 16, 2022
 
 * Automated dependency updates
