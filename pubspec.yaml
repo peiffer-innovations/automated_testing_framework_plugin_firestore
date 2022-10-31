@@ -8,11 +8,11 @@ environment:
 
 dependencies: 
   automated_testing_framework: '^4.0.7+5'
-  automated_testing_framework_plugin_firebase_storage: '^5.0.0+19'
-  cloud_firestore: '^3.5.1'
-  firebase_auth: '^3.11.2'
-  firebase_core: '^1.24.0'
-  firebase_storage: '^10.3.11'
+  automated_testing_framework_plugin_firebase_storage: ^5.0.0+19
+  cloud_firestore: ">=3.5.1 <5.0.0"
+  firebase_auth: ">=3.11.2 <5.0.0"
+  firebase_core: ">=1.24.0 <3.0.0"
+  firebase_storage: ">=10.3.11 <12.0.0"
   flutter: 
     sdk: 'flutter'
   form_validation: '^2.1.0+19'
