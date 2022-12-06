@@ -30,7 +30,7 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  var credentials =
+  final credentials =
       json.decode(await rootBundle.loadString('assets/secrets/login.json'));
   await Firebase.initializeApp();
   await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -38,7 +38,7 @@ void main() async {
     password: credentials['password'],
   );
 
-  var store = FirestoreTestStore(
+  final store = FirestoreTestStore(
     db: FirebaseFirestore.instance,
     storage: FirebaseStorage.instance,
   );

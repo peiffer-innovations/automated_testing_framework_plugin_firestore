@@ -71,22 +71,22 @@ class FirestoreTestStore {
 
     try {
       results = [];
-      var actualCollectionPath = (testCollectionPath ?? 'tests');
+      final actualCollectionPath = (testCollectionPath ?? 'tests');
 
-      var collection = db.collection(actualCollectionPath);
-      var query = await collection.orderBy('name').get();
+      final collection = db.collection(actualCollectionPath);
+      final query = await collection.orderBy('name').get();
       for (var doc in query.docs) {
-        var data = doc.data();
-        var pTest = PendingTest(
+        final data = doc.data();
+        final pTest = PendingTest(
           loader: AsyncTestLoader(({bool? ignoreImages}) async {
-            var testDoc = await db
+            final testDoc = await db
                 .collection(actualCollectionPath)
                 .doc(doc.id)
                 .collection('versions')
                 .doc(data['activeVersion'].toString())
                 .get();
 
-            var version = JsonClass.parseInt(testDoc.id)!;
+            final version = JsonClass.parseInt(testDoc.id)!;
             return Test(
               active: true,
               name: data['name'],
@@ -118,12 +118,12 @@ class FirestoreTestStore {
   /// Implementation of the [TestReport] functional interface that can submit
   /// test reports to Cloud Firestore.
   Future<bool> testReporter(TestReport report) async {
-    var result = false;
+    final result = false;
 
-    var actualCollectionPath = (reportCollectionPath ?? 'reports');
-    var collection = db.collection(actualCollectionPath);
+    final actualCollectionPath = (reportCollectionPath ?? 'reports');
+    final collection = db.collection(actualCollectionPath);
 
-    var doc = collection
+    final doc = collection
         .doc('${report.name}_${report.version}')
         .collection('devices')
         .doc(
@@ -132,7 +132,7 @@ class FirestoreTestStore {
     await doc.set(report.toJson(false));
 
     if (!kIsWeb && storage != null) {
-      var testStorage = FirebaseStorageTestStore(
+      final testStorage = FirebaseStorageTestStore(
         storage: storage!,
         imagePath: imagePath,
       );
@@ -151,19 +151,19 @@ class FirestoreTestStore {
     var result = false;
 
     try {
-      var actualCollectionPath = (testCollectionPath ?? 'tests');
-      var collection = db.collection(actualCollectionPath);
+      final actualCollectionPath = (testCollectionPath ?? 'tests');
+      final collection = db.collection(actualCollectionPath);
 
-      var version = test.version + 1;
+      final version = test.version + 1;
 
-      var testData = <String, dynamic>{
+      final testData = <String, dynamic>{
         'activeVersion': version,
         'name': test.name,
         'numSteps': test.steps.length,
         'timestamp': DateTime.now(),
         'version': version,
       };
-      var versionData = <Map<String, dynamic>>[];
+      final versionData = <Map<String, dynamic>>[];
       for (var step in test.steps) {
         versionData.add(
           step

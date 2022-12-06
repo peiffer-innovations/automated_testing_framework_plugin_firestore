@@ -75,22 +75,22 @@ class AssertFirestoreValueStep extends TestRunnerStep {
     required TestReport report,
     required TestController tester,
   }) async {
-    String collectionPath = tester.resolveVariable(this.collectionPath);
-    String? documentId = tester.resolveVariable(this.documentId);
-    String? value = tester.resolveVariable(this.value);
+    final collectionPath = tester.resolveVariable(this.collectionPath);
+    final documentId = tester.resolveVariable(this.documentId);
+    final value = tester.resolveVariable(this.value);
     assert(collectionPath.isNotEmpty == true);
     assert(documentId?.isNotEmpty == true);
 
-    var name = "$id('$collectionPath', '$documentId', '$value', '$equals')";
+    final name = "$id('$collectionPath', '$documentId', '$value', '$equals')";
     log(
       name,
       tester: tester,
     );
 
-    var firestore = TestFirestoreHelper.firestore;
+    final firestore = TestFirestoreHelper.firestore;
 
-    var doc = firestore.collection(collectionPath).doc(documentId);
-    var data = json.encode((await doc.get()).data());
+    final doc = firestore.collection(collectionPath).doc(documentId);
+    final data = json.encode((await doc.get()).data());
 
     if ((data == value) != equals) {
       throw Exception(

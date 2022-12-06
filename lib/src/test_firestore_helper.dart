@@ -35,8 +35,8 @@ class TestFirestoreHelper {
       values[id] = defaultValue;
     }
 
-    var translator = Translator.of(context);
-    var encoder = JsonEncoder.withIndent('  ');
+    final translator = Translator.of(context);
+    final encoder = const JsonEncoder.withIndent('  ');
     var initialValue = values[id]?.toString();
     if (initialValue?.isNotEmpty == true) {
       try {
@@ -96,12 +96,12 @@ class TestFirestoreHelper {
   static void registerTestSteps([TestStepRegistry? registry]) {
     (registry ?? TestStepRegistry.instance).registerCustomSteps([
       TestStepBuilder(
-        availableTestStep: AvailableTestStep(
+        availableTestStep: const AvailableTestStep(
           form: AssertFirestoreValueForm(),
           help: TestFirestoreTranslations
               .atf_firestore_help_assert_firestore_value,
           id: AssertFirestoreValueStep.id,
-          keys: const {'collectionPath', 'documentId', 'equals', 'value'},
+          keys: {'collectionPath', 'documentId', 'equals', 'value'},
           quickAddValues: null,
           title: TestFirestoreTranslations
               .atf_firestore_title_assert_firestore_value,
@@ -111,12 +111,12 @@ class TestFirestoreHelper {
         testRunnerStepBuilder: AssertFirestoreValueStep.fromDynamic,
       ),
       TestStepBuilder(
-        availableTestStep: AvailableTestStep(
+        availableTestStep: const AvailableTestStep(
           form: SetFirestoreValueForm(),
           help:
               TestFirestoreTranslations.atf_firestore_help_set_firestore_value,
           id: SetFirestoreValueStep.id,
-          keys: const {'collectionPath', 'documentId', 'value'},
+          keys: {'collectionPath', 'documentId', 'value'},
           quickAddValues: null,
           title:
               TestFirestoreTranslations.atf_firestore_title_set_firestore_value,
@@ -135,7 +135,7 @@ class _JsonTextInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    var encoder = JsonEncoder.withIndent('  ');
+    final encoder = const JsonEncoder.withIndent('  ');
     var encoded = newValue.text;
 
     try {

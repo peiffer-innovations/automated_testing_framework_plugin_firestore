@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('assert_firestore_value', () {
     TestFirestoreHelper.registerTestSteps();
-    var availStep = TestStepRegistry.instance.getAvailableTestStep(
+    final availStep = TestStepRegistry.instance.getAvailableTestStep(
       'assert_firestore_value',
     )!;
 
@@ -23,7 +23,7 @@ void main() {
 
   test('set_firestore_value', () {
     TestFirestoreHelper.registerTestSteps();
-    var availStep = TestStepRegistry.instance.getAvailableTestStep(
+    final availStep = TestStepRegistry.instance.getAvailableTestStep(
       'set_firestore_value',
     )!;
 

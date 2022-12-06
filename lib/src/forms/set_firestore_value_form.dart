@@ -42,7 +42,7 @@ class SetFirestoreValueForm extends TestStepForm {
               ],
               values: values!,
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             buildEditText(
               context: context,
               id: 'documentId',
@@ -52,7 +52,7 @@ class SetFirestoreValueForm extends TestStepForm {
               ],
               values: values,
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TestFirestoreHelper.buildJsonEditText(
               context: context,
               id: 'value',
